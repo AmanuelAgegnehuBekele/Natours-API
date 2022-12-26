@@ -3,18 +3,16 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const Tour = require('../../models/tourModel');
 
-const DB = process.env.DATABASE_URL.replace(
-  '<PASSWORD>',
-  process.env.DATABASE_PASSWORD
-);
-
+// const DB = process.env.DATABASE_URL.replace(
+//   '<PASSWORD>',
+//   process.env.DATABASE_PASSWORD
+// );
+const DB = process.env.DATABASE_LOCAL;
 mongoose.connect(DB).then(() => {
   console.log('DB connection successful');
 });
 
-const tours = JSON.parse(
-  fs.readFileSync(`${__dirname}/tours-simple.json`, 'utf-8')
-);
+const tours = JSON.parse(fs.readFileSync(`${__dirname}/tours.json`, 'utf-8'));
 
 //IMPORT DATA INTO DATABASE
 
