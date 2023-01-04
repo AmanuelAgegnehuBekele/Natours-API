@@ -456,10 +456,10 @@ body {
   background-color: #f7f7f7;
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
+  display: block;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
-  justify-content: center;
+  /* justify-content: center; */
 }
 .overview-box__group:not(:last-child) {
   margin-bottom: 7rem;
