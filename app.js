@@ -12,11 +12,21 @@ const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
 const viewRouter = require('./routes/viewRoutes');
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
+
+//cors
+app.use(
+  cors({
+    credentials: true,
+    origin: 'http://localhost:3000',
+  })
+);
 
 // Serving static files
 // app.use(express.static(`${__dirname}/public`));
@@ -40,6 +50,7 @@ app.use('/api/', limiter);
 
 // Body parser, reading data into req.boy
 app.use(express.json({ limit: '10kb' }));
+app.use(cookieParser());
 
 // Data sanitization against NoSQL query injection
 app.use(mongoSanitizer());
@@ -67,10 +78,16 @@ app.use(
 // });
 
 app.use((req, res, next) => {
-  req.requestTime = new Date().toISOString();
+  res.setHeader(
+    'Content-Security-Policy',
+    "script-src 'self' cdnjs.cloudflare.com"
+  );
+
+  console.log(req.cookies);
+
+  // req.requestTime = new Date().toISOString();
   next();
 });
-
 //routes
 app.use('/', viewRouter);
 app.use('/api/v1/tours', tourRouter);
