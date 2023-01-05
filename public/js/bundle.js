@@ -12023,7 +12023,7 @@ var logout = /*#__PURE__*/function () {
         case 7:
           _context2.prev = 7;
           _context2.t0 = _context2["catch"](0);
-          howAlert('error', 'Error logging out! Try again');
+          (0, _alert.showAlert)('error', 'Error logging out! Try again');
         case 10:
         case "end":
           return _context2.stop();
@@ -12212,7 +12212,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33001" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33111" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

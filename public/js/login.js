@@ -31,6 +31,6 @@ export const logout = async () => {
     });
     if (res.data.status === 'success') location.reload(true);
   } catch (error) {
-    howAlert('error', 'Error logging out! Try again');
+    showAlert('error', 'Error logging out! Try again');
   }
 };
