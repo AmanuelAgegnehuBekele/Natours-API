@@ -83,7 +83,7 @@ app.use((req, res, next) => {
     "script-src 'self' cdnjs.cloudflare.com"
   );
 
-  console.log(req.cookies);
+  // console.log(req.cookies);
 
   // req.requestTime = new Date().toISOString();
   next();
