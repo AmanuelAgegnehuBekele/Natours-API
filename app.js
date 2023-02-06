@@ -50,6 +50,7 @@ app.use('/api/', limiter);
 
 // Body parser, reading data into req.boy
 app.use(express.json({ limit: '10kb' }));
+app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 app.use(cookieParser());
 
 // Data sanitization against NoSQL query injection
@@ -83,7 +84,7 @@ app.use((req, res, next) => {
     "script-src 'self' cdnjs.cloudflare.com"
   );
 
-  console.log(req.cookies);
+  // console.log(req.cookies);
 
   // req.requestTime = new Date().toISOString();
   next();
